@@ -8,7 +8,7 @@ byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};
 String request;
 unsigned long StartTime;
 EthernetClient client;
-void connecttoangeal()
+void connecttoserver()
 {
     Serial.println("connecting...");
   if (client.connect("YOUR_SERVER", 8008)) {
@@ -34,7 +34,7 @@ void setup() {
 
   delay(1000);
 
-  connecttoangeal();
+  connecttoserver();
   
   Serial.write("Initialized!\n");
 }
@@ -112,7 +112,7 @@ void loop() {
   // put your main code here, to run repeatedly:
     if (!client.connected()) {
       delay(5000);
-      connecttoangeal();
+      connecttoserver();
       return;
     }
     if(millis()-StartTime>5000)
